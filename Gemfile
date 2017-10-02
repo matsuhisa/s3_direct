@@ -14,10 +14,18 @@ gem 'coffee-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
+gem 'aws-sdk', '~> 2'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+
+  gem 'rspec'
+  gem 'rspec-power_assert'
+  gem 'guard-rspec'
 end
 
 group :development do
