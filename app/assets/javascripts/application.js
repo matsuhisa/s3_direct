@@ -35,6 +35,7 @@ $(function() {
         content_type: file.type  // ファイルの形式
       }
     }).done(function (data) {
+
       // 2. サーバが返した情報をそのまま使ってFormDataを作る
       var name, fd = new FormData();
       for (name in data.form) if (data.form.hasOwnProperty(name)) {
@@ -45,7 +46,16 @@ $(function() {
       // 送信
      // 上図でいう(3)に対応
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', data.url, true)
+      xhr.open('POST', data.form.url, true);
+      xhr.onload = function(event) {
+        console.log(xhr.status);
+        if (xhr.status === 204) {
+          $('.images').append($('<img>').attr({"src": data.upload_url}));
+          console.log(data.upload_url);
+        } else {
+          console.error(xhr.statusText);
+        }
+      }
       xhr.send(fd);
     })
   });
