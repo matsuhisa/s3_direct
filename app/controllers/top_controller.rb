@@ -31,7 +31,7 @@ class TopController < ApplicationController
         credentials.secret_access_key,
         policy)
     ).gsub("\n", '')
-
+binding.pry
     @url = "https://#{BUCKET_NAME}.s3.amazonaws.com/"
     @AWSAccessKeyId = credentials.access_key_id
     @signature = signature
