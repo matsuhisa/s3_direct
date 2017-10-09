@@ -7,6 +7,11 @@ class TopController < ApplicationController
   def index
   end
 
+  def show
+    @uuid = SecureRandom.uuid
+    @name = params[:name]
+  end
+
   def create
     # IAM ならどうなるの？
     credentials = Aws::SharedCredentials.new
@@ -42,8 +47,4 @@ class TopController < ApplicationController
     @upload_url = "#{IMAGE_DOMAIN}#{BUCKET_NAME}/#{file_path}"
   end
 
-  # private
-  #
-  # def images_params
-  # end
 end

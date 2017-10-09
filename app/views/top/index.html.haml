@@ -1,3 +1,3 @@
-= form_with url:s3_path, method: 'post' do | f |
-  = file_field_tag 'images'
+= form_with url:s3_path, method: 'post', multipart: true do | f |
+  = file_field_tag 'images[]', multiple: true
 .images
