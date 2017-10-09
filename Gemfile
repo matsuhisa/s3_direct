@@ -25,6 +25,7 @@ group :development, :test do
   gem 'pry-doc'
 
   gem 'rspec'
+  gem 'rspec-rails'
   gem 'rspec-power_assert'
   gem 'guard-rspec'
 end
