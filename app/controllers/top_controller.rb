@@ -7,15 +7,11 @@ class TopController < ApplicationController
   def index
   end
 
-  def show
-    @uuid = SecureRandom.uuid
-    @name = params[:name]
-  end
-
   def create
     # IAM ならどうなるの？
     credentials = Aws::SharedCredentials.new
-    file_path = "#{DIRECTORY_PATH}#{SecureRandom.uuid}.jpg"
+    extension = Mime::Type.lookup(params[:content_type]).to_sym.to_s
+    file_path = "#{DIRECTORY_PATH}#{SecureRandom.uuid}.#{extension}"
 
     policy_document = {
       expiration: (Time.current + 1.minute).utc,
